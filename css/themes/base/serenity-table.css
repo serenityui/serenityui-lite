@@ -1,0 +1,14 @@
+/*******************************************************************************
+ *
+ * Widget: Serenity UI Table
+ *
+ ******************************************************************************/
+
+/* Alternate rows will be a lighter color */
+.sr-table-body tr:nth-child(2n+0) {
+    background: #F0F0F0;
+}
+
+.sr-table-body tr.ui-state-active:nth-child(2n+0) {
+    background: #007fff;
+}
