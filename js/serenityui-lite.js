@@ -1,5 +1,5 @@
 /**
- * Serenity UI v2017.1.170720 (https://www.serenityui.com)
+ * Serenity UI v2017.1.170722 (https://www.serenityui.com)
  */
 (function ($, serenity) {
     serenity.Model = serenity.Observable.extend({
@@ -3708,12 +3708,8 @@
 
             // Does the node have children.
             var hasChildren = this._mode === "flat"
-                ? (
-                    // The childItem has children
-                    this.dataSource().view().Where(function (e) { return e[itemFields.parent] === childItem[itemFields.id]; }).Count() > 0 || 
-                    // loadOnDemand is a function and the childItem has not explicitly indicated that there are no children
-                    (typeof this.options.loadOnDemand === "function" && childItem[itemFields.hasChildren] !== false)
-                  )
+                // The childItem has children
+                ? (this.dataSource().view().Where(function (e) { return e[itemFields.parent] === childItem[itemFields.id]; }).Count() > 0)
                 : $.isArray(childItem.children);
             
             // Get the node text.
@@ -3742,26 +3738,6 @@
             } else if (typeof childItem[this.options.itemFields.imageCss] === "string") {
                 $childNode.find(".sr-tree-node-text").prepend(this.html.imageCss.replace("{{imageCss}}", childItem[this.options.itemFields.imageCss]));
             }
-
-/*
-            // The tree has checkboxes.
-            if (this.options.checkboxes === true) {
-                var imageCss = "fa fa-square-o";
-                var state = "unchecked";
-                // The childItem is checked.
-                if (typeof childItem[this.options.itemFields.checked] === true) {
-                    imageCss = "fa fa-check-square-o";
-                    state = "checked";
-                }
-                $childNode
-                    .attr("data-state", state)
-                    .find(".sr-tree-node-text").before(
-                        this.html.checkbox
-                            .replace("{{imageCss}}", imageCss)
-                            .replace("{{state}}", state)
-                    );
-            }
-*/
             
             // Add the child node to the parent node.
             childrenContainer.append($childNode);
@@ -3919,27 +3895,6 @@
 
             // Expand the node.
             var item = this._expandNode(node);
-            
-            var childrenContainer = node.children(".sr-tree-children");
-            
-            // The options.loadOnDemand is defined and the node does not have child items.
-            if (typeof this.options.loadOnDemand === "function" && childrenContainer.children(".sr-tree-node").length === 0) {
-                // Get the item for the node.
-                item = item === null ? this.nodeItem(node) : item;
-                
-                // Add a "Loading..." node.
-                childrenContainer.append("<li class='sr-tree-node sr-tree-expand sr-tree-node-loading'><div class='sr-tree-node-text'>Loading...</div></li>");
-                
-                // Call the loadOnDemand function.
-                this.options.loadOnDemand(item, node, function () {
-                    // If the "Loading..." node is still there, then remove it. (Would be there if no children).
-                    childrenContainer.children(".sr-tree-node-loading").remove();
-                    // If there are no children at all, then remove the "arrow" for expanding / collapsing the node.
-                    if (childrenContainer.children().length === 0) {
-                        childrenContainer.prevAll(".sr-tree-node-arrow").attr("class", "sr-tree-node-arrow");
-                    }
-                });
-            }
 
             // Trigger the expand event.
             this._trigger("expand", null, { node: node });
@@ -4171,38 +4126,6 @@
 /// var tree = $("#tree").serenityTree({
 ///   dataSource: new serenity.DataSource({ data: items }),
 ///   collapse: function (event, ui) {
-///     console.log(ui.node);
-///   }
-/// }).data("serenityTree");
-/// </example>
-/// <version added="2016.1" updated="2016.1" />
-
-/// <event>check</event>
-/// <summary>Triggered when a node is checked.</summary>
-/// <param name="event" type="jQuery.Event">A jQuery.Event object.</param>
-/// <param name="ui.sender" type="serenity.Tree">Tree widget.</param>
-/// <param name="ui.node" type="jQuery">Node that was checked.</param>
-/// <example for="JavaScript" description="Subscribe to the check event.">
-/// var tree = $("#tree").serenityTree({
-///   dataSource: new serenity.DataSource({ data: items }),
-///   checkboxes: true,
-///   check: function (event, ui) {
-///     console.log(ui.node);
-///   }
-/// }).data("serenityTree");
-/// </example>
-/// <version added="2016.1" updated="2016.1" />
-
-/// <event>uncheck</event>
-/// <summary>Triggered when a node is unchecked.</summary>
-/// <param name="event" type="jQuery.Event">A jQuery.Event object.</param>
-/// <param name="ui.sender" type="serenity.Tree">Tree widget.</param>
-/// <param name="ui.node" type="jQuery">Node that was unchecked.</param>
-/// <example for="JavaScript" description="Subscribe to the uncheck event.">
-/// var tree = $("#tree").serenityTree({
-///   dataSource: new serenity.DataSource({ data: items }),
-///   checkboxes: true,
-///   uncheck: function (event, ui) {
 ///     console.log(ui.node);
 ///   }
 /// }).data("serenityTree");

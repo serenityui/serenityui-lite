@@ -1,5 +1,5 @@
 /**
- * Serenity UI v2017.1.170720 (https://www.serenityui.com)
+ * Serenity UI v2017.1.170722 (https://www.serenityui.com)
  */
 /*******************************************************************************
  *
@@ -368,4 +368,14 @@ th div.sr-table-col-actions span.fa {
 /* ul element that contains the child nodes of a parent node */
 .sr-tree-children {
     padding-left: 10px;
+}
+
+/*******************************************************************************
+ *
+ * Widget: Serenity UI Chart
+ *
+ ******************************************************************************/
+
+.sr-chart .sr-selectable:hover {
+    cursor: pointer;
 }

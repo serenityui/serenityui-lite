@@ -1,5 +1,5 @@
 /**
- * Serenity UI v2017.1.170720 (https://www.serenityui.com)
+ * Serenity UI v2017.1.170722 (https://www.serenityui.com)
  */
 // http://gjunge.github.io/rateit.js/examples/
 // http://www.jqueryscript.net/other/Highly-Customizable-Rating-Plugin-jQuery-Rateit-js.html

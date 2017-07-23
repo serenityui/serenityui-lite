@@ -1,5 +1,5 @@
 /**
- * Serenity UI v2017.1.170720 (https://www.serenityui.com)
+ * Serenity UI v2017.1.170722 (https://www.serenityui.com)
  */
 (function ($, serenity) {
     $.widget("serenity.autocomplete", $.ui.autocomplete, serenity._dataWidgetDef);

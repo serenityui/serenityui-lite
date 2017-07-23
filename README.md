@@ -1,14 +1,14 @@
 # Serenity UI Lite
-Serenity UI Lite is an open source library built upon the same framework as [Serenity UI](http://serenityui.com), a **FREE** JavaScript library that extends the jQuery UI framework.
+Serenity UI Lite is an open source library built upon the same core as [Serenity UI](http://serenityui.com), a **FREE** JavaScript library that extends the jQuery UI framework.
 
-While the [Serenity UI](http://serenityui.com) framework is not open source, it is included with Serenity UI Lite as the foundation for the Serenity UI Lite Classes, Modules and Widgets.
+While the [Serenity UI](http://serenityui.com) core is not open source, it is included with Serenity UI Lite as the foundation for the Serenity UI Lite Classes, Modules and Widgets.
 
 ## Serenity UI Lite Features
 The following table provides a comparison between Serenity UI Lite and [Serenity UI](http://serenityui.com).
 
 | Feature | Source Code Provided | Serenity UI Lite | Serenity UI |
 | :-------- | :-----------: | :----------------: | :-----------: |
-| **Framework** |
+| **Core** |
 | serenity functions | :white_circle: | :large_blue_circle: | :large_blue_circle: |
 | [Class](http://serenityui.com/Widgets/Documentation/Class) | :white_circle: | :large_blue_circle: | :large_blue_circle: |
 | [DataSource](http://serenityui.com/Widgets/Demos/datasource/basic) | :white_circle: | :large_blue_circle: | :large_blue_circle: |
@@ -68,8 +68,8 @@ Assuming the Serenity UI Lite css and js folders were copied to your web applica
     <script src="js/jquery.min.js"></script>
     <!-- Serenity UI Lite for Third Party Open Source Libraries -->
     <script src="js/serenityui-lite-libs.min.js"></script>
-    <!-- Serenity UI Framework -->
-    <script src="js/serenityui-framework.min.js"></script>
+    <!-- Serenity UI Core -->
+    <script src="js/serenityui-core.min.js"></script>
     <!-- Serenity UI Lite -->
     <script src="js/serenityui-lite.min.js"></script>
 </head>

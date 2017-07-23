@@ -1,5 +1,5 @@
 /**
- * Serenity UI v2017.1.170720 (https://www.serenityui.com)
+ * Serenity UI v2017.1.170722 (https://www.serenityui.com)
  */
 /*! jQuery UI - v1.12.0 - 2016-07-08
 * http://jqueryui.com
@@ -377,6 +377,15 @@ th div.sr-table-col-actions span.fa {
     padding-left: 10px;
 }
 
+/*******************************************************************************
+ *
+ * Widget: Serenity UI Chart
+ *
+ ******************************************************************************/
+
+.sr-chart .sr-selectable:hover {
+    cursor: pointer;
+}
 /*******************************************************************************
  *
  * Widget: Serenity UI Table
