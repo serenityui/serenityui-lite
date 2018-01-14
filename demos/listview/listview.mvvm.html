@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Listview MVVM</title>
+  <link href="../../css/serenityui-lite-libs.min.css" rel="stylesheet" />
+  <link id="serenityTheme" href="../../css/themes/base/serenityui-lite.min.css" rel="stylesheet" />
+
+  <link id="highlightTheme" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" />
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/serenityui-lite-libs.min.js"></script>
+  <script src="../../js/serenityui-core.min.js"></script>
+    <script src="../../js/serenityui-lite.min.js"></script>
+
+<script src="/widgets/src/js/serenity.viewmodel.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="../js/theme-selection.js"></script>
+  <script src="../js/showsource.js"></script>
+</head>
+<body>
+  <h2>Example</h2>
+
+    <style>
+        .demo-events {
+            margin-top:20px;
+            height:15em;
+            padding:5px;
+            overflow-y: auto;
+        }
+        .demo-events div {
+            border-bottom: 1px solid whitesmoke;
+            margin-bottom: 10px;
+        }
+        .demo-instructions {
+            color: #23527c;
+        }
+    </style>
+
+  <script id="html" type="text/serenity-template" class="sr-source-code" data-type="html" data-title="HTML">
+    <div  data-widget='serenityListview | 
+                      {
+                          "dataSource": {{employeeList}},
+                          "titleField": "fullName",
+                          "selectable": true,
+                          "pageable": true,
+                          "mode": {
+                              "view": "tile",
+                              "selectable": true
+                          },
+                          "tile": {
+                            "templateSelector": "#tileTemplate"
+                          },
+                          "list": {
+                            "templateSelector": "#listTemplate"
+                          },
+                          "height": "400px",
+                          "dataBound": {{dataBound}},
+                          "select": {{select}},
+                          "modeChange": {{modeChange}},
+                          "pageChange": {{pageChange}}
+                      }'>
+    </div>
+
+    <h3>Events</h3>
+      <div class="demo-events ui-widget-content" 
+           data-bind="dataSource: {{eventList}}" 
+           data-template="<div>{{id}}. {{description}}</div>">
+    </div>
+  </script>
+
+  <script id="tileTemplate" type="text/serenity-template" class="sr-source-code" data-type="html" data-title="Listview Tile Template">
+    <div style='font-weight:bold;width:100%;margin-top:10px;text-align:center;'>{{fullName}}</div>
+    <i class='fa fa-2x fa-user' aria-hidden='true' style='position:absolute;bottom:5px;right:5px;'></i>
+  </script>
+
+  <script id="listTemplate" type="text/serenity-template" class="sr-source-code" data-type="html" data-title="Listview List Template">
+    <i class='fa fa-user' aria-hidden='true' style='margin-right:5px;'></i>
+    {{fullName}}
+  </script>
+
+  <script>
+    $("body").append($("#html").text());
+  </script>
+
+  <script src="../js/employees.js" data-url="../js/employees.ts" class="sr-source-code" data-title="Data" data-type="javascript"></script>
+
+  <script src="listview.mvvm.js" data-url="listview.mvvm_.js" class="sr-source-code" data-title="JavaScript" data-type="javascript"></script>
+
+  <script data-url="listview.mvvm.ts" class="sr-source-code" data-title="TypeScript" data-type="typescript"></script>
+</body>
+</html>

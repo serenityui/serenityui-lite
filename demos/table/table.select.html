@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Table Select</title>
+	<link href="../../css/serenityui-lite-libs.min.css" rel="stylesheet" />
+	<link id="serenityTheme" href="../../css/themes/base/serenityui-lite.min.css" rel="stylesheet" />
+
+	<link id="highlightTheme" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" />
+
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/serenityui-lite-libs.min.js"></script>
+	<script src="../../js/serenityui-core.min.js"></script>
+    <script src="../../js/serenityui-lite.min.js"></script>
+	
+	<script src="/widgets/src/js/serenity.table.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	<script src="../js/theme-selection.js"></script>
+	<script src="../js/showsource.js"></script>
+</head>
+<body>
+	<h2>Example</h2>
+
+	<style>
+		#results {
+			margin-top:20px;
+			height:15em;
+			padding:5px;
+			overflow-y: auto;
+		}
+		#results div {
+			border-bottom: 1px solid whitesmoke;
+			margin-bottom: 10px;
+		}
+		.demo-instructions {
+			color: #23527c;
+		}
+	</style>
+
+	<p class="demo-instructions">
+		The Selection Mode determines how rows are selected in the table. The options are:
+	</p>
+	<ul class="demo-instructions">
+		<li>Single Row - One row can be selected at a time by clicking on a row.</li>
+		<li>Multiple Rows - More than one row can be selected by clicking on rows.</li>
+		<li>Checkbox - A column of checkboxes are displayed as the first column in the row. Rows are selected by clicking the checkbox</li>
+	</ul>
+	
+	<div style="margin-bottom: 20px;">
+		<label>Selection Mode:</label>
+		<select id="selectionMode">
+			<option value="none">None</option>
+			<option value="singlerow" selected>Single Row</option>
+			<option value="multiplerows">Multiple Rows</option>
+			<option value="checkbox">Checkbox</option>
+		</select>
+	</div>
+
+	<script id="html" type="text/serenity-template" class="sr-source-code" data-type="html" data-title="HTML">
+		<div id="table"></div>
+
+		<h3>Select Event</h3>
+		<div id="results" class="ui-widget-content">
+		</div>
+	</script>
+
+	<script>
+		$("body").append($("#html").text());
+		
+		$("#selectionMode").selectmenu({
+			width: 200,
+			select: function (event, ui) {
+				$("#table").data("serenityTable").option("selectionmode", ui.item.value);
+				$("#table").data("serenityTable").render();
+			}
+		});
+	</script>
+
+	<script src="../js/employees.js" data-url="../js/employees.js" class="sr-source-code" data-title="Data" data-type="javascript"></script>
+
+    <script src="table.select.js" data-url="table.select.js" class="sr-source-code" data-title="JavaScript" data-type="javascript"></script>
+
+    <script data-url="table.select.ts" class="sr-source-code" data-title="TypeScript" data-type="typescript"></script>
+</body>
+</html>

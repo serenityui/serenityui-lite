@@ -1,0 +1,1 @@
+{"version":3,"file":"tree.basic.js","sourceRoot":"","sources":["tree.basic.ts"],"names":[],"mappings":"AAAA,oDAAoD;AACpD,qCAAqC;AAErC,CAAC,CAAC;IACE,CAAC,CAAC,OAAO,CAAC,CAAC,YAAY,CAAC;QACpB,UAAU,EAAE,IAAI,QAAQ,CAAC,UAAU,CAAC;YAChC,IAAI,EAAE,KAAK;SACd,CAAC;KACL,CAAC,CAAC;AACP,CAAC,CAAC,CAAC"}

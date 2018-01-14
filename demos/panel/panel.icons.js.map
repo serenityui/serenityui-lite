@@ -1,0 +1,1 @@
+{"version":3,"file":"panel.icons.js","sourceRoot":"","sources":["panel.icons.ts"],"names":[],"mappings":"AAAA,oDAAoD;AAEpD,CAAC,CAAC;IACE,CAAC,CAAC,QAAQ,CAAC,CAAC,aAAa,CAAC;QACtB,WAAW,EAAE,IAAI;QACjB,QAAQ,EAAE;YACN,QAAQ,EAAE,kBAAkB;YAC5B,MAAM,EAAE,mBAAmB;SAC9B;KACJ,CAAC,CAAC;AACP,CAAC,CAAC,CAAC"}

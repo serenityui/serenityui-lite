@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>ViewModel Basic</title>
+  <link href="../../css/serenityui-lite-libs.min.css" rel="stylesheet" />
+  <link id="serenityTheme" href="../../css/themes/base/serenityui-lite.min.css" rel="stylesheet" />
+
+  <link id="highlightTheme" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" />
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet" />
+  
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/serenityui-lite-libs.min.js"></script>
+  <script src="../../js/serenityui-core.min.js"></script>
+    <script src="../../js/serenityui-lite.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="../js/showsource.js"></script>
+</head>
+<body>
+
+	<h2>Example</h2>
+  
+  <style>
+    #view .row {
+      margin-bottom: 20px;
+    } 
+		.demo-instructions {
+			color: #23527c;
+		}
+		
+		@media (max-width: 1400px) {
+			td.comment-block-cell {
+				display:none;
+			}
+		}
+  </style>
+	
+	<p class="demo-instructions">
+		The ViewModel is attached to a "root" DOM element. When changes are made to the elements within the root DOM element, the changes are reflected in the ViewModel.
+	</p>
+	
+  <script id="html" type="text/serenity-template" class="sr-source-code" data-type="html" data-title="HTML" data-group="HTML">
+    <div style="position:relative;">
+      <div id="view" class="fluid-container" style="width:300px;display:inline-block;">
+        <div class="row">
+          <div class="col-sm-6">
+            First Name:
+          </div>
+          <div class="col-sm-6">
+            <input data-bind="val: {{employee.firstName}}"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            Last Name:
+          </div>
+          <div class="col-sm-6">
+            <input data-bind="val: {{employee.lastName}}"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            Title:
+          </div>
+          <div class="col-sm-6">
+            <select data-widget='serenityDropdownlist | 
+                    {
+                      "dataSource": {{titles}},
+                      "textField": "title",
+                      "valueField": "title",
+                      "width": "180px"
+                    }'
+                    data-bind="value: {{employee.title}}">
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            Years of Service:
+          </div>
+          <div class="col-sm-6">
+            <input data-bind="val: {{employee.service | integer}}"/>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-sm-6">
+            Full Name:
+          </div>
+          <div class="col-sm-6" data-bind="text: {{employee.fullName}}"></div>
+        </div>
+      </div>
+
+      <pre id="employeeJson" style="position:absolute;top:0px;bottom:0px;left:400px;width:300px;" class="ui-widget-container">
+      </pre>
+    </div>
+  </script>
+
+  <script class="sr-source-code" type="text/comments" data-group="HTML">
+		<p>
+			All properties and methods that are bound to the observable are wrapped in double curly braces. 
+			Nested paths are supported making it possible to look up properties nested below the observable. 
+			In this example, the ViewModel.options.observable has not been explicitly set, so the observable 
+			defaults to the instance of the ViewModel. The ViewModel has a property called employee. Since 
+			the ViewModel is attached to the DOM, the employee properties are bound to an HTML element with 
+			"employee" then dot (.) and then the name of the employee property to be bound.
+		</p>
+		<p>
+			The ViewModel looks for attributes associated with an element. In this example, the attributes 
+			demonstrated are:
+		</p>
+		<ul>
+			<li>
+				<i>data-bind</i> - The value for the "data-bind" attribute contains the name of a function, then a
+				colon and then the name of the observable property. The ViewModel will treat the value bound to the 
+				element as a string unless the name of the property is followed by a pipe (|) and then a data type. 
+				If the observable property is bound to a DOM element, then the function is a jQuery function. If 
+				the observable property is bound to a Serenity UI widget, then the function belongs to the widget.
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<i>data-widget</i> - The value for the "data-widget" attribute contains the name of the function 
+				for instantiating the Serenity UI widget, then a pipe (|) and then the options to be passed 
+				into the widget when instantiated as a valid JSON Object. The only exception is an option 
+				value that is bound to the observable. The option value is surrounded by double curly braces 
+				and no double quotes.
+			</li>
+		</ul>
+		<p>
+			The following elements have been bound to the ViewModel:
+		</p>
+		<ul>
+			<li>
+				The employee.firstName is bound to an input using the data-bind attribute. The jQuery.val() 
+				function is used to get and set the employee.firstName.
+				<pre>&lt;input data-bind="val: {{employee.firstName}}"/></pre>
+			</li>
+			<li>
+				The employee.lastName is bound to an input using the data-bind attribute. The jQuery.val() 
+				function is used to get and set the employee.lastName.
+				<pre>&lt;input data-bind="val: {{employee.lastName}}"/></pre>
+			</li>
+			<li>
+				The select element is instantiated as a serenity.Dropdownlist with options as defined in the 
+				data-widget attribute. The dataSource for the Dropdownlist comes from the ViewModel.titles 
+				property. The employee.title is bound to an input using the data-bind attribute. The 
+				serenity.Dropdownlist.value function is used to get and set the selected employee.title.
+				<pre>&lt;select data-widget='serenityDropdownlist | 
+        {
+          "dataSource": {{titles}},
+          "textField": "title",
+          "valueField": "title",
+          "width": "180px"
+        }'
+        data-bind="value: {{employee.title}}">
+&lt;/select>
+</pre>
+			</li>
+			<li>
+				The employee.service is bound to an input using the data-bind attribute. The jQuery.val() 
+				function is used to get and set the employee.service. Since the employee.service is an 
+				integer, the data type is specified.
+				<pre>&lt;input data-bind="val: {{employee.service | integer}}"/></pre>
+			</li>
+			<li>
+				The employee.fullName is bound to a div using the data-bind attribute. The jQuery.text() 
+				function is used to set the employee.fullName.
+				<pre>&lt;div class="col-sm-6" data-bind="text: {{employee.fullName}}">&lt;/div></pre>
+			</li>
+		</ul>
+  </script>
+	
+  <script>
+    $("body").append($("#html").text());
+  </script>
+
+	<script src="viewmodel.basic.js" data-url="viewmodel.basic_.js" class="sr-source-code" data-title="JavaScript" data-type="javascript" data-group="JavaScript"></script>
+
+  <script class="sr-source-code" type="text/comments" data-group="JavaScript">
+		<p>
+			The Employee class is defined by extending serenity.Model.
+		</p>
+		<p>
+			The EmployeeViewModel class is defined by extending serenity.ViewModel. The EmployeeViewModel 
+			contains employee and titles properties. When the EmployeeViewModel is instantiated, the titles 
+			property is initialized as a serenity.DataSource in the EmployeeViewModel constructor.
+		</p>
+		<p>
+			After the EmployeeViewModel class is instantiated, the employee property is initialized to a 
+			new instance of an Employee.
+		</p>
+		<p>
+			The change event for the EmployeeViewModel.employee object is bound to an anonymous function to 
+			get the employee information as JSON and display the JSON in a div element with an id of 
+			employeeJson.
+		</p>
+		<p>
+			The instance of the EmployeeViewModel is attached to the div element with an id of view. Since 
+			an observable was not explicitly identified, then instance of the EmployeeViewModel is used as 
+			the observable.
+		</p>
+  </script>
+	
+	<script data-url="viewmodel.basic.ts" class="sr-source-code" data-title="TypeScript" data-type="typescript"></script>
+</body>
+</html>

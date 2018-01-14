@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Notification Templates</title>
+    <link href="../../css/serenityui-lite-libs.min.css" rel="stylesheet" />
+    <link id="serenityTheme" href="../../css/themes/base/serenityui-lite.min.css" rel="stylesheet" />
+
+    <link id="highlightTheme" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" />
+
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/serenityui-lite-libs.min.js"></script>
+    <script src="../../js/serenityui-core.min.js"></script>
+    <script src="../../js/serenityui-lite.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="../js/theme-selection.js"></script>
+    <script src="../js/showsource.js"></script>
+
+    <style>
+        #results {
+            margin-top:1em;
+            height:10em;
+            overflow: auto;
+            padding:1em;
+        }
+    </style>
+</head>
+<body>
+    <style>
+        .sr-notification-instance {
+            padding: 10px;
+        }
+
+        fieldset {
+            width: 300px;
+        }
+
+        fieldset, fieldset .srw-row {
+            margin-bottom: 10px;
+        }
+
+        fieldset label {
+            width: 80px;
+            display: inline-block;
+        }
+    </style>
+
+    <h2>Example</h2>
+
+    <script id="html" type="text/serenity-template" class="sr-source-code" data-type="html" data-title="HTML">
+        <fieldset>
+            <legend>Options</legend>
+
+            <div class="srw-row">
+                <label>CSS Class:</label>
+                <select id="cssClass">
+                    <option value="">None</option>
+                    <option value="ui-state-highlight">Highlight</option>
+                    <option value="ui-state-error">Alert</option>
+                    <option value="ui-state-active">Active</option>
+                    <option value="ui-state-disabled">Disabled</option>
+                </select>
+            </div>
+
+            <div class="srw-row">
+                <label>Animate:</label>
+                <select id="animate">
+                    <option value="top">Top</option>
+                    <option value="bottom">Bottom</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                </select>
+            </div>
+
+            <div class="srw-row">
+                <label>Position:</label>
+                <select id="position">
+                    <option value='{ "top": 20, "left": 20 }'>Top Left</option>
+                    <option value='{ "top": 20, "right": 20 }'>Top Right</option>
+                    <option value='{ "bottom": 20, "left": 20 }'>Bottom Left</option>
+                    <option value='{ "bottom": 20, "right": 20 }'>Bottom Right</option>
+                </select>
+            </div>
+
+            <div class="srw-row">
+                <label>Template:</label>
+                <select id="template">
+                    <option value="hello">Hello</option>
+                    <option value="goodbye">Goodbye</option>
+                    <option value="time">Current Time</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <button id="showNotification">Show Notification</button>
+        <button id="hideNotification">Hide All Notifications</button>
+
+        <div id="notification">
+            <div data-template="hello">
+                Hello from Serenity UI!
+            </div>
+            <div data-template="goodbye">
+                Goodbye from Serenity UI!
+            </div>
+            <div data-template="time">
+            </div>
+        </div>
+
+        <h3>Events:</h3>
+        <pre id="results" class="ui-widget-content"></pre>
+    </script>
+
+    <script>
+        $("body").append($("#html").text());
+    </script>
+
+    <script src="notification.templates.js" data-url="notification.templates.js" class="sr-source-code" data-title="JavaScript" data-type="javascript"></script>
+
+    <script data-url="notification.templates.ts" class="sr-source-code" data-title="TypeScript" data-type="typescript"></script>
+</body>
+</html>

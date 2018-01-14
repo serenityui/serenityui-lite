@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>ViewModel Basic</title>
+  <link href="../../css/serenityui-lite-libs.min.css" rel="stylesheet" />
+  <link id="serenityTheme" href="../../css/themes/base/serenityui-lite.min.css" rel="stylesheet" />
+
+  <link id="highlightTheme" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" />
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet" />
+  
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/serenityui-lite-libs.min.js"></script>
+  <script src="../../js/serenityui-core.min.js"></script>
+    <script src="../../js/serenityui-lite.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="../js/showsource.js"></script>
+</head>
+<body>
+
+    <h2>Example</h2>
+  
+  <style>
+    #view .row {
+      margin-bottom: 20px;
+    } 
+        .demo-instructions {
+            color: #23527c;
+        }
+        
+        @media (max-width: 1400px) {
+            td.comment-block-cell {
+                display:none;
+            }
+        }
+  </style>
+    
+    <p class="demo-instructions">
+      Make changes to the first name and last name. The full name is updated with the changes.
+      Click the "Reset Name" button to reset the name to the initial values.
+    </p>
+    
+  <script id="html" type="text/serenity-template" class="sr-source-code" data-type="html" data-title="HTML" data-group="HTML">
+    <div style="position:relative;">
+      <div id="view" class="fluid-container" style="width:300px;display:inline-block;">
+        <div class="row">
+          <div class="col-sm-6">
+            First Name:
+          </div>
+          <div class="col-sm-6">
+            <input data-bind="val: {{employee.firstName}}"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            Last Name:
+          </div>
+          <div class="col-sm-6">
+            <input data-bind="val: {{employee.lastName}}"/>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-sm-6">
+            Full Name:
+          </div>
+          <div class="col-sm-6" data-bind="text: {{employee.fullName}}"></div>
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-12">
+            <button data-bind="(click): {{resetName}}">Reset Name</button>
+          </div>
+        </div>
+      </div>
+      </pre>
+    </div>
+  </script>
+
+  <script class="sr-source-code" type="text/comments" data-group="HTML">
+    <p>
+      The EmployeeViewModel is attached to the DOM and the employee.firstName,
+      employee.lastName and employee.fullName are bound to input and div elements.
+    </p>
+    <ul>
+      <li>employee.firstName
+        <pre>&lt;input data-bind="val: {{employee.firstName}}"/></pre>
+      </li>
+      <li>employee.lastName
+        <pre>&lt;input data-bind="val: {{employee.lastName}}"/></pre>
+      </li>
+      <li>employee.fullName
+        <pre>&lt;div class="col-sm-6" data-bind="text: {{employee.fullName}}">&lt;/div></pre>
+      </li>
+    </ul>
+    <p>
+      When firstName and lastName are changed, the fullName is updated. When the
+      "Reset Name" button is clicked, the name is reset to the initial values.
+    </p>
+    <p>
+    The "Reset Name" button contains the data-bind attribute where the click event
+    (warpped in parenthesis) is bound to the EmployeeViewModel resetName function 
+    (wrapped in double curly braces).
+    </p>
+    <pre>&lt;button data-bind="(click): {{resetName}}">Reset Name&lt;/button></pre>
+  </script>
+
+  <script>
+    $("body").append($("#html").text());
+  </script>
+
+  <script src="viewmodel.events.js" data-url="viewmodel.events_.js" class="sr-source-code" data-title="JavaScript" data-type="javascript" data-group="JavaScript"></script>
+
+  <script class="sr-source-code" type="text/comments" data-group="JavaScript">
+    <p>
+      The Employee class is defined by extending serenity.Model. In the Employee
+      class constructor, the initializeValues function is called to initialize the
+      firstName and lastName properties and track changes made to the properties.
+    </p>
+    
+    <pre>this.initializeValues({firstName: firstName, lastName: lastName });</pre>
+      
+    <p>
+      This could have also been accomplished by passing the firstName and lastName 
+      property values to the serenity.ViewModel constructor like this:
+    </p>
+  
+    <pre>serenity.Model.call(this, {firstName: firstName, lastName: lastName });</pre>
+
+    <p>
+      The EmployeeViewModel class is defined by extending serenity.ViewModel. 
+      The EmployeeViewModel contains the employee property and a resetName function. 
+    </p>
+
+    <p>
+      After the EmployeeViewModel class is instantiated, the employee property 
+      is initialized to a new instance of an Employee.
+    </p>
+
+    <p>
+      When the "Reset Name" button is clicked, the EmployeeViewModel.resetName
+      function is called where the employee.rollback function sets the employee 
+      firstName and lastName properties back to the values that were set in the
+      Employee constructor with the initializeValues function.
+    </p>
+  </script>
+    
+  <script data-url="viewmodel.events.ts" class="sr-source-code" data-title="TypeScript" data-type="typescript" data-group="TypeScript"></script>
+
+  <script class="sr-source-code" type="text/comments" data-group="TypeScript">
+    <p>
+      The Employee class is defined by extending serenity.Model. In the Employee
+      class constructor, the initializeValues function is called to initialize the
+      firstName and lastName properties and track changes made to the properties.
+    </p>
+    
+    <pre>this.initializeValues({firstName: firstName, lastName: lastName });</pre>
+
+    <p>
+      The EmployeeViewModel class is defined by extending serenity.ViewModel. 
+      The EmployeeViewModel contains the employee property and a resetName function. 
+    </p>
+
+    <p>
+      After the EmployeeViewModel class is instantiated, the employee property 
+      is initialized to a new instance of an Employee.
+    </p>
+
+    <p>
+      When the "Reset Name" button is clicked, the EmployeeViewModel.resetName
+      function is called where the employee.rollback function sets the employee 
+      firstName and lastName properties back to the values that were set in the
+      Employee constructor with the initializeValues function.
+    </p>
+  </script>
+</body>
+</html>

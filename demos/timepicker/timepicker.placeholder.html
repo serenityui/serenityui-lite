@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>TimePicker Placeholder</title>
+  <link href="../../css/serenityui-lite-libs.min.css" rel="stylesheet" />
+  <link id="serenityTheme" href="../../css/themes/base/serenityui-lite.min.css" rel="stylesheet" />
+
+  <link id="highlightTheme" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" />
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/serenityui-lite-libs.min.js"></script>
+  <script src="../../js/serenityui-core.min.js"></script>
+    <script src="../../js/serenityui-lite.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="../js/theme-selection.js"></script>
+  <script src="../js/showsource.js"></script>
+</head>
+<body>
+  <h2>Example</h2>
+
+  <style>
+    #results {
+      margin-top:20px;
+      min-height:2em;
+      padding:10px;
+    }
+    .demo-instructions {
+      color: #23527c;
+    }
+  </style>
+  
+  <p class="demo-instructions">
+    Select a time from the timepicker.
+  </p>
+  
+  <script id="html" type="text/serenity-template" class="sr-source-code" data-type="html" data-title="HTML">
+    <select id="timepicker" style="width:200px;"></select>
+
+    <h3>Selected Items</h3>
+    <div id="results" class="ui-widget-content">
+    </div>
+  </script>
+
+  <script>
+    $("body").append($("#html").text());
+  </script>
+
+  <script src="timepicker.placeholder.js" data-url="timepicker.placeholder.js" class="sr-source-code" data-title="JavaScript" data-type="javascript"></script>
+
+  <script data-url="timepicker.placeholder.ts" class="sr-source-code" data-title="TypeScript" data-type="typescript"></script>
+</body>
+</html>

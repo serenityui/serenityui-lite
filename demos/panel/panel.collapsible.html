@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Panel Collapsible</title>
+    <link href="../../css/serenityui-lite-libs.min.css" rel="stylesheet" />
+    <link id="serenityTheme" href="../../css/themes/base/serenityui-lite.min.css" rel="stylesheet" />
+
+    <link id="highlightTheme" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" />
+
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/serenityui-lite-libs.min.js"></script>
+    <script src="../../js/serenityui-core.min.js"></script>
+    <script src="../../js/serenityui-lite.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="../js/theme-selection.js"></script>
+    <script src="../js/showsource.js"></script>
+
+    <style>
+        #results {
+            margin-top:1em;
+            height:5em;
+            overflow: auto;
+            padding:1em;
+        }
+        .demo-instructions {
+            color: #23527c;
+        }
+    </style>
+</head>
+<body>
+    <h2>Example</h2>
+
+    <p class="demo-instructions">
+        This example demonstrates a Panel that can be expanded and collapsed.
+    </p>
+
+    <script id="html" type="text/serenity-template" class="sr-source-code" data-type="html" data-title="HTML">
+        <div id="panel" style="width:250px;">
+            <div>Sample Panel</div>
+            <div>
+                Here is some content.
+            </div>
+        </div>
+
+        <h3>Console</h3>
+        <div id="results" class="ui-widget-content">
+        </div>
+    </script>
+
+    <script>
+        $("body").append($("#html").text());
+    </script>
+	
+    <script class="sr-source-code" data-type="javascript" data-title="Source Code">
+        var panel = $("#panel").serenityPanel({
+            collapsible: true,
+            open: function () {
+                $("#results").append("<div>The open event was triggered");
+            },
+            close: function () {
+                $("#results").append("<div>The close event was triggered");
+            }
+        }).data("serenityPanel");
+   </script>
+</body>
+</html>

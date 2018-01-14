@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Rating Basic</title>
+    <link href="../../css/serenityui-lite-libs.min.css" rel="stylesheet" />
+    <link id="serenityTheme" href="../../css/themes/base/serenityui-lite.min.css" rel="stylesheet" />
+
+    <link id="highlightTheme" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" />
+
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/serenityui-lite-libs.min.js"></script>
+    <script src="../../js/serenityui-core.min.js"></script>
+    <script src="../../js/serenityui-lite.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="../js/theme-selection.js"></script>
+    <script src="../js/showsource.js"></script>
+
+    <style>
+        #results {
+            margin-top:1em;
+            height:10em;
+            overflow: auto;
+            padding:1em;
+        }
+        .demo-instructions {
+            color: #23527c;
+        }
+    </style>
+</head>
+<body>
+	<style class="sr-source-code" data-type="css" data-title="CSS">
+        .sr-rating-wrapper:hover {
+            cursor: pointer;
+        }
+
+		.rating-icon {
+			background-image: url(star.gif);
+		}
+		
+		.available-star {
+			background-position: 0 0;
+		}
+		
+		.selected-star {
+			background-position: 0 -16px;
+		}
+		
+		.highlight-star {
+			background-position: 0 -32px;
+		}
+	</style>
+
+	<h2>Example</h2>
+
+    <script id="html" type="text/serenity-template" class="sr-source-code" data-type="html" data-title="HTML">
+		<p class="demo-instructions">
+			This example demonstrates the rating widget with a font size of 1.5em.
+		</p>
+		<input id="fontRating" value="3" />
+		
+		<p class="demo-instructions">
+			This example demonstrates the rating widget with a font code of 10022 and the initial value passed in as an option.
+		</p>
+		<input id="fontCodeRating" />
+		
+		<p class="demo-instructions" style="margin-bottom:5px;">
+			This example demonstrates the rating widget with a font character of '@' and the initial value passed in as an option.
+		</p>
+		<input id="fontCharRating" />
+		
+		<p class="demo-instructions" style="margin-bottom:5px;">
+			This example demonstrates the rating widget using icons, the count set to 10 and the step set to 1.
+		</p>
+		<input id="iconRating" value="5" />
+		
+		<p class="demo-instructions" style="margin-bottom:5px;">
+			This example demonstrates the rating widget using icons and readonly set to true.
+		</p>
+		<input id="readonlyRating" value="2.5" />
+
+        <h3>Events:</h3>
+        <div id="results" class="ui-widget-content"></div>
+    </script>
+
+    <script>
+        $("body").append($("#html").text());
+    </script>
+
+	<script src="rating.basic.js" data-url="rating.basic.js" class="sr-source-code" data-title="JavaScript" data-type="javascript"></script>
+
+    <script data-url="rating.basic.ts" class="sr-source-code" data-title="TypeScript" data-type="typescript"></script>
+</body>
+</html>

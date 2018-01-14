@@ -1,5 +1,5 @@
 /**
- * Serenity UI v2017.1.170722 (https://www.serenityui.com)
+ * Serenity UI v2017.4.180113 (https://serenityui.com)
  */
 (function ($) {
     $.widget("serenity.filtermenu", $.serenity.datawidget, {

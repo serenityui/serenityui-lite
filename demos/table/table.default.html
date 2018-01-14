@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Table Default Functionality</title>
+    <link href="../../css/serenityui-lite-libs.min.css" rel="stylesheet" />
+    <link id="serenityTheme" href="../../css/themes/base/serenityui-lite.min.css" rel="stylesheet" />
+
+    <link id="highlightTheme" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" />
+
+<!-- Include Bootstrap to work out compatibility issues -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet" />
+
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/serenityui-lite-libs.min.js"></script>
+    <script src="../../js/serenityui-core.min.js"></script>
+    <script src="../../js/serenityui-lite.min.js"></script>
+	
+<script src="/widgets/src/js/serenity.table.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="../js/theme-selection.js"></script>
+    <script src="../js/showsource.js"></script>
+</head>
+<body>
+    <h2>Example</h2>
+	
+    <script id="html" type="text/serenity-template" class="sr-source-code" data-type="html" data-title="HTML">
+        <div id="table"></div>
+    </script>
+
+    <script>
+        $("body").append($("#html").text());
+    </script>
+
+    <script src="../js/employees.js" data-url="../js/employees.js" class="sr-source-code" data-title="Data" data-type="javascript"></script>
+
+    <script src="table.default.js" data-url="table.default.js" class="sr-source-code" data-title="JavaScript" data-type="javascript"></script>
+
+    <script data-url="table.default.ts" class="sr-source-code" data-title="TypeScript" data-type="typescript"></script>
+</body>
+</html>

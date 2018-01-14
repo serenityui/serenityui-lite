@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ComboBox Basic</title>
+    <!--<link href="/widgets/src/css/serenityui-libs.min.css" rel="stylesheet" /> -->
+    <link href="../../css/serenityui-lite-libs.min.css" rel="stylesheet" />
+    <!--<link id="serenityTheme" href="../widgets/src/libs/jqueryui-1.12.0/themes/base/serenityui.css" rel="stylesheet" />-->
+    <link id="serenityTheme" href="../../css/themes/base/serenityui-lite.min.css" rel="stylesheet" />
+
+    <link id="highlightTheme" href="/widgets/src/libs/highlight/css/default.min.css" rel="stylesheet" />
+
+    <!--<script src="/widgets/src/libs/jquery-2.2.4/jquery.min.js"></script>-->
+    <script src="../../js/jquery.min.js"></script>
+    <!--<script src="/widgets/src/js/serenityui-libs.min.js"></script>-->
+    <script src="../../js/serenityui-lite-libs.min.js"></script>
+    <!--<script src="/widgets/src/js/serenityui.js"></script>-->
+    <script src="../../js/serenityui-core.min.js"></script>
+    <script src="../../js/serenityui-lite.min.js"></script>
+
+    <script src="/widgets/src/libs/highlight/js/highlight.min.js"></script>
+    <script src="../js/theme-selection.js"></script>
+    <script src="../js/showsource.js"></script>
+
+    <style>
+        #results {
+            margin-top:20px;
+            min-height:2em;
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Example</h2>
+	
+    <script id="html" type="text/serenity-template" class="sr-source-code" data-type="html" data-title="HTML">
+        <input id="combobox" style="width:200px;"/>
+
+        <h3>Selected Items</h3>
+        <div id="results" class="ui-widget-content">
+        </div>
+    </script>
+
+    <script>
+        $("body").append($("#html").text());
+    </script>
+
+    <script src="../js/employees.js" data-url="../js/employees.js" class="sr-source-code" data-title="Data" data-type="javascript"></script>
+
+    <script src="combobox.basic.js" data-url="combobox.basic.js" class="sr-source-code" data-title="JavaScript" data-type="javascript"></script>
+    
+    <script data-url="combobox.basic.ts" class="sr-source-code" data-title="TypeScript" data-type="typescript"></script>
+</body>
+</html>

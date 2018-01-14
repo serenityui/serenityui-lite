@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ContextMenu DataSource</title>
+    <link href="../../css/serenityui-lite-libs.min.css" rel="stylesheet" />
+    <link id="serenityTheme" href="../../css/themes/base/serenityui-lite.min.css" rel="stylesheet" />
+
+    <link id="highlightTheme" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" />
+
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/serenityui-lite-libs.min.js"></script>
+    <script src="../../js/serenityui-core.min.js"></script>
+    <script src="../../js/serenityui-lite.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="../js/theme-selection.js"></script>
+    <script src="../js/showsource.js"></script>
+
+    <style>
+        #target {
+            width:200px;
+            height:50px;
+        }
+
+        #results {
+            margin-top:20px;
+            min-height:2em;
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Example</h2>
+	
+    <script id="html" type="text/serenity-template" class="sr-source-code" data-type="html" data-title="HTML">
+        <div id="target" class="ui-widget-content">
+            Right click on me
+        </div>
+        
+        <ul id="contextmenu"></ul>
+
+        <h3>Clicked Items</h3>
+        <div id="results" class="ui-widget-content">
+        </div>
+    </script>
+
+    <script>
+        $("body").append($("#html").text());
+    </script>
+
+    <script src="contextmenu.datasource.js" data-url="contextmenu.datasource.js" class="sr-source-code" data-title="JavaScript" data-type="javascript"></script>
+    
+    <script data-url="contextmenu.datasource.ts" class="sr-source-code" data-title="TypeScript" data-type="typescript"></script>
+</body>
+</html>

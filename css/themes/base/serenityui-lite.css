@@ -1,5 +1,5 @@
 /**
- * Serenity UI v2017.1.170722 (https://www.serenityui.com)
+ * Serenity UI v2017.4.180113 (https://serenityui.com)
  */
 /*! jQuery UI - v1.12.0 - 2016-07-08
 * http://jqueryui.com
@@ -221,47 +221,100 @@ div.sr-scollbar-width div {
     height: 16px;
     text-align: center;
 }
+
+/* jQuery UI menu items have a list-style-image that adds an additional 20px above the li element. Get rid of it. */
+.sr-contextmenu .ui-menu-item {
+    list-style-image: none;
+}
 /*******************************************************************************
  *
  * Widget: Serenity UI Table
  *
  ******************************************************************************/
 
-.sr-table-header table {
-    border-spacing: 0px;
+.sr-table table {
+  table-layout: fixed;
 }
+
+/* Table header table */
+.sr-table .sr-table-header > table {
+  border-spacing: 0px;
+}
+
+/* Hide table header borders */
+.sr-table .sr-table-header,
+.sr-table .sr-table-header > table {
+  border: none;
+}
+
 
 .sr-table-body {
-    overflow-y: auto;
-    overflow-x: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-    .sr-table-body table {
-        border-spacing: 0px;
-    }
+.sr-table-body table {
+  border-spacing: 0px;
+}
+
 
 /* Sortable column header */
+
 th.sr-table-col-sortable:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
+
 
 /* Filter column header action */
+
 th.sr-table-col-filterable .fa-filter:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
+
 
 /* Column header action container */
+
 th div.sr-table-col-actions {
-    position:absolute;
-    top:0px;
-    right:0px;    
+  /*position: absolute;
+  top: 0px;
+  right: 0px;*/
+  float:right;
 }
+
 
 /* Column header action image */
+
 th div.sr-table-col-actions span.fa {
-    padding:5px;
+  padding: 5px;
 }
 
+/* Remove border from selected row(s) */
+.sr-table tr.ui-state-active {
+  border-width: 0px;
+}
+
+
+/* Center table header  */
+
+.sr-table th {
+  text-align: center;
+}
+
+.sr-table tr, .sr-table th, .sr-table td {
+  border-collapse: collapse;
+}
+
+.sr-table th .sr-table-col-actions, .sr-table .ui-widget-content {
+  -webkit-box-sizing: initial;
+  -moz-box-sizing: initial;
+  box-sizing: initial;
+}
+
+/* Column heading text when not bootstrap table */
+.sr-table table:not(.table) th .sr-table-col-text {
+  display:inline-block;
+  margin-top:5px;
+}
 /*******************************************************************************
  *
  * Widget: Serenity UI Panel
@@ -388,15 +441,109 @@ th div.sr-table-col-actions span.fa {
 }
 /*******************************************************************************
  *
- * Widget: Serenity UI Table
+ * Widget: Serenity UI Chart
  *
  ******************************************************************************/
 
-/* Alternate rows will be a lighter color */
-.sr-table-body tr:nth-child(2n+0) {
-    background: #F0F0F0;
+.sr-combobox-wrapper .sr-show-list-button {
+  position: absolute; 
+  top: 0px; 
+  bottom: 0px; 
+  margin-left: -1px;  
 }
 
-.sr-table-body tr.ui-state-active:nth-child(2n+0) {
+/*******************************************************************************
+*
+* Widget: Serenity UI Listview
+*
+******************************************************************************/
+
+.sr-listview {
+  position: relative;
+}
+
+.sr-listview .sr-listview-heading {
+  padding: 3px;
+  overflow-y: hidden;
+  height: 33px;
+  border-width: 0px 0px 1px 0px;
+}
+
+.sr-listview .sr-listview-body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+/* Heading for a listview with a fixed height */
+.sr-listview.sr-fixed-height .sr-listview-heading {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+/* Body for a listview with a fixed height */
+.sr-listview.sr-fixed-height .sr-listview-body {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+}
+
+
+/* Items in list mode */
+.sr-listview .sr-listview-item.sr-list-mode {
+  width: 100%;
+  display: block;
+}
+
+/* Items in list mode with border */
+.sr-listview .sr-listview-item.sr-list-mode.ui-widget-content {
+  border-width: 0px 0px 1px 0px;
+}
+
+/* Item content in list mode */
+.sr-listview .sr-listview-item.sr-list-mode .sr-content {
+  padding: 2px 5px;
+}
+
+
+
+/* Items in tile mode */
+.sr-listview .sr-listview-item.sr-tile-mode {
+  display: inline-block;
+  position: relative;
+  padding: 2px 2px;
+  margin: 5px;
+}
+
+
+
+/* Pager Panel for a listview with a fixed height */
+.sr-listview.sr-fixed-height .sr-listview-pager {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+/* Pager Widget */
+.sr-listview .sr-listview-pager .ui-widget-content {
+  min-height: 23px;
+  border-width: 1px 0px 0px 0px;
+}
+/*******************************************************************************
+ *
+ * Widget: Serenity UI Table for base Theme
+ *
+ ******************************************************************************/
+
+/* Alternate rows */
+.sr-table-body tr.sr-table-altrow {
+  background: #F0F0F0;
+}
+
+/* Alternate active rows */
+.sr-table-body tr.sr-table-altrow.ui-state-active {
     background: #007fff;
 }

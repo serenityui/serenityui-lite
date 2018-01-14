@@ -1,5 +1,5 @@
 /**
- * Serenity UI v2017.1.170722 (https://www.serenityui.com)
+ * Serenity UI v2017.4.180113 (https://serenityui.com)
  */
 (function ($, serenity) {
     serenity.Model = serenity.Observable.extend({
@@ -78,9 +78,7 @@
 
             // Initialize the model with the values passed in.
             if (arguments.length > 0) {
-                this._pristine = values;
-
-                this._initProperties(values);
+                this.initializeValues(values);
             }
         },
 
@@ -138,9 +136,39 @@
             return json;
         },
         
+        initializeValues: function (values) {
+          /// <function>initializeValues</function>
+          /// <summary>
+          /// Initialize the values in the model and track the changes that are applied to the model.
+          /// The initializeValues function is called in the serenity.Model constructor when a JSON 
+          /// object with the property values is passed into the model constructor. If a JSON object 
+          /// is not passed into the model constructor, then the initializeValues function can be
+          /// called after the model is instantiated to initialize the values in the model.
+          /// </summary>
+          /// <example for="JavaScript">
+          /// var Person = serenity.Model.extend({
+          ///   firstName: null,
+          ///   lastName: null
+          /// });
+          /// var person = new Person();
+          /// person.initializeValues({
+          ///   firstName: "John",
+          ///   lastName: "Doe"
+          /// });
+          /// person.set("lastName", "Smith");
+          /// console.log(person.toJSON());
+          /// person.rollback();
+          /// console.log(person.toJSON());
+          /// </example>
+          /// <version added="2017.3" updated="2017.3" />
+          
+          this._pristine = values;
+          this._initProperties(values);
+          this.dirty = false;
+        },
+        
         rollback: function () {
             /// <function>rollback</function>
-            /// <typedef>rollback()</typedef>
             /// <summary>Rollback the values in the model to the values that were set when the model was instantiated.</summary>
             /// <example for="JavaScript">
             /// var Person = serenity.Model.extend({
